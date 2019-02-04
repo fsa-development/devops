@@ -1,0 +1,32 @@
+---
+# tasks file for nginx
+- name: add the nginx repository
+  yum_repository:
+    name: nginx
+    description: nginx CentOS repo
+    baseurl: http://nginx.org/packages/centos/$releasever/$basearch/
+    gpgkey: https://nginx.org/keys/nginx_signing.key
+    gpgcheck: True
+- name: install nginx
+  yum:
+    name:
+      - nginx
+    state: present
+    update_cache: True
+
+- name: set up sites-available config directory
+  file:
+    path: /etc/nginx/sites-available
+    state: directory
+
+- name: set up sites-enabled config directory
+  file:
+    path: /etc/nginx/sites-enabled
+    state: directory
+
+- name: write nginx config
+  template: dest=/etc/nginx/nginx.conf src={{ nginx_conf_template }}
+  notify: reload nginx
+
+# - name: enable nginx in default config
+#   template: dest=/etc/default/nginx src={{ nginx_etc_default_template }}

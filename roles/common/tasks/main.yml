@@ -1,0 +1,4 @@
+---
+- name: Install remi repo
+  include_role:
+    name: geerlingguy.repo-remi

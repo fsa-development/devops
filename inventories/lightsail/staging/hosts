@@ -1,0 +1,9 @@
+[east-stage]
+edge1.stage.east.freespeechaction.com
+db1.stage.east.freespeechaction.com
+
+[webservers]
+edge1.stage.east.freespeechaction.com
+
+[dbservers]
+db1.stage.east.freespeechaction.com

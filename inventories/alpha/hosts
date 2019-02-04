@@ -1,0 +1,8 @@
+[alpha]
+52.20.111.77
+
+[webservers:children]
+alpha
+
+[dbservers:children]
+alpha

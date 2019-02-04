@@ -1,0 +1,7 @@
+---
+- name: Install PHP
+  include_role:
+    name: php
+- name: Install nginx
+  include_role:
+    name: nginx

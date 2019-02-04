@@ -1,0 +1,16 @@
+---
+# tasks file for mariadb
+- name: add the mariadb repository
+  yum_repository:
+    name: mariadb
+    description: mariadb CentOS repo
+    baseurl: http://yum.mariadb.org/10.3/centos7-amd64
+    gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+    gpgcheck: True
+
+- name: install mariadb
+  yum:
+    name:
+      - mariadb
+    state: present
+    update_cache: True
