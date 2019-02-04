@@ -7,11 +7,17 @@
     baseurl: http://nginx.org/packages/centos/$releasever/$basearch/
     gpgkey: https://nginx.org/keys/nginx_signing.key
     gpgcheck: True
+
 - name: install nginx
   yum:
     name:
       - nginx
     state: present
+
+- name: enable nginx
+  service:
+    name: nginx
+    enabled: yes
 
 - name: set up sites-available config directory
   file:
@@ -27,5 +33,27 @@
   template: dest=/etc/nginx/nginx.conf src={{ nginx_conf_template }}
   notify: reload nginx
 
-# - name: enable nginx in default config
-#   template: dest=/etc/default/nginx src={{ nginx_etc_default_template }}
+- name: write default nginx config
+  template: dest=/etc/nginx/sites-available/default.conf src={{ nginx_default_host }}
+
+- name: remove junk file
+  file:
+    path: /etc/nginx/sites-available/default.config
+    state: absent
+
+- name: add enabled site symlinks
+  file:
+    path: '{{ nginx_sites_enabled }}{{ item }}.conf'
+    src: '{{ nginx_sites_available }}{{ item }}.conf'
+    state: link
+  with_items:
+      - default
+  notify: reload nginx
+
+# commented because there is nothing to disable
+# - name: remove disabled site symlinks
+#   file:
+#     path: '{{ nginx_sites_enabled }}{{ item }}.conf'
+#     state: absent
+#   with_items:
+#   notify: reload nginx
