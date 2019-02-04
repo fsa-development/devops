@@ -14,4 +14,3 @@
       - php73-php-pecl-redis4
       - php73-php-xml
     state: present
-    update_cache: True

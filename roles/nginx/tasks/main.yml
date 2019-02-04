@@ -12,7 +12,6 @@
     name:
       - nginx
     state: present
-    update_cache: True
 
 - name: set up sites-available config directory
   file:

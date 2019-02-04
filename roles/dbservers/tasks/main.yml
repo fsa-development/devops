@@ -13,4 +13,3 @@
     name:
       - mariadb
     state: present
-    update_cache: True
