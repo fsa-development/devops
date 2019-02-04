@@ -1,23 +1,27 @@
+[all:vars]
+host_domain=freespeechaction.com
+ansible_host='{{ inventory_hostname }}.{{ host_domain }}'
+
 [east-prod]
-dns1.freespeechaction.com
-dns2.freespeechaction.com
-db1.prod.east.freespeechaction.com
-db2.prod.east.freespeechaction.com
-edge1.prod.east.freespeechaction.com
-edge2.prod.east.freespeechaction.com
-task1.prod.east.freespeechaction.com
+dns1
+dns2
+db1.prod.east
+db2.prod.east
+edge1.prod.east
+edge2.prod.east
+task1.prod.east
 
 [dnsservers]
-dns1.freespeechaction.com
-dns2.freespeechaction.com
+dns1
+dns2
 
 [webservers]
-edge1.prod.east.freespeechaction.com
-edge2.prod.east.freespeechaction.com
+edge1.prod.east
+edge2.prod.east
 
 [dbservers]
-db1.prod.east.freespeechaction.com
-db2.prod.east.freespeechaction.com
+db1.prod.east
+db2.prod.east
 
 [taskservers]
-task1.prod.east.freespeechaction.com
+task1.prod.east

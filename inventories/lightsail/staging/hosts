@@ -1,9 +1,13 @@
+[all:vars]
+host_domain=freespeechaction.com
+ansible_host='{{ inventory_hostname }}.{{ host_domain }}'
+
 [east-stage]
-edge1.stage.east.freespeechaction.com
-db1.stage.east.freespeechaction.com
+edge1.stage.east
+db1.stage.east
 
 [webservers]
-edge1.stage.east.freespeechaction.com
+edge1.stage.east
 
 [dbservers]
-db1.stage.east.freespeechaction.com
+db1.stage.east
